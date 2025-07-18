@@ -25,8 +25,8 @@ jobs:
           key: ${{ runner.os }}-sonar
 
       - name: Run SonarCloud analysis
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn clean verify sonar:sonar \
-            -Dsonar.login=$SONAR_TOKEN
+  env:
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  run: |
+    mvn clean verify sonar:sonar \
+      -Dsonar.login=$SONAR_TOKEN \
