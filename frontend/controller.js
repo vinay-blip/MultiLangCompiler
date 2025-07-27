@@ -23,7 +23,7 @@ signupTab.addEventListener('click', () => {
 });
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'http://localhost:6000';
 
 // Utility function to show error message
 function showError(element, message) {
