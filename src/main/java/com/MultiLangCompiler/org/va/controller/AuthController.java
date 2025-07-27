@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:8081")
+@RequestMapping("")
 public class AuthController {
 
     private final AuthService authService;
@@ -18,9 +17,15 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping("/login")
+    @GetMapping("/auth/hello")
+    public String hello() {
+        return "hello";
+    }
+
+    @PostMapping("/auth/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
         AuthResponse response = authService.login(request);
+        System.out.println("login page tak gae");
         if (response != null && response.isSuccess()) {
             return ResponseEntity.ok(response);
         } else {
@@ -30,8 +35,9 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/register")
+    @PostMapping("/auth/register")
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+        System.out.println("register page tak gae");
         AuthResponse response = authService.register(request);
         if (response.isSuccess()) {
             return ResponseEntity.ok(response);
